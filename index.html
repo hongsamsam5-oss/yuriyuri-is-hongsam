@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YURI'S UNIVERSE ★</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Space+Grotesk:wght@400;600;700&display=swap');
+
+:root {
+  --pink: #ff5cc8;
+  --lime: #d8ff42;
+  --purple: #a58aff;
+  --black: #171717;
+  --white: #fffdf5;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--black);
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 5%;
+  border-bottom: 2px solid var(--black);
+  background: var(--lime);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-family: 'Black Han Sans';
+  font-size: 25px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 22px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.nav-links a:hover { color: #ff2ca8; }
+
+.hero {
+  min-height: 620px;
+  background: var(--pink);
+  padding: 70px 7%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-tag {
+  font-size: 13px;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+.hero h1 {
+  font-family: 'Black Han Sans';
+  font-size: clamp(90px, 20vw, 230px);
+  line-height: .85;
+  margin: 30px 0;
+  letter-spacing: -8px;
+  position: relative;
+  z-index: 2;
+  text-shadow: 6px 6px 0 var(--lime);
+}
+
+.hero-sub {
+  font-family: 'Do Hyeon';
+  font-size: clamp(20px, 3vw, 32px);
+  position: relative;
+  z-index: 2;
+}
+
+.star {
+  position: absolute;
+  font-size: 110px;
+  animation: rotate 12s linear infinite;
+}
+
+.star.one { right: 10%; top: 15%; }
+.star.two { right: 25%; bottom: 10%; font-size: 65px; }
+
+@keyframes rotate {
+  to { transform: rotate(360deg); }
+}
+
+.marquee {
+  background: var(--black);
+  color: var(--lime);
+  padding: 14px 0;
+  font-size: 18px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.marquee span {
+  display: inline-block;
+  animation: move 20s linear infinite;
+}
+
+@keyframes move {
+  to { transform: translateX(-50%); }
+}
+
+section { padding: 90px 7%; }
+
+.section-title {
+  font-family: 'Black Han Sans';
+  font-size: clamp(42px, 8vw, 85px);
+  margin: 0 0 40px;
+  letter-spacing: -2px;
+}
+
+.about {
+  background: var(--white);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 35px;
+}
+
+.profile-card {
+  background: var(--lime);
+  border: 3px solid var(--black);
+  padding: 30px;
+  box-shadow: 10px 10px 0 var(--black);
+  transform: rotate(-2deg);
+}
+
+.profile-card .big {
+  font-family: 'Black Han Sans';
+  font-size: 70px;
+  line-height: 1;
+}
+
+.profile-card p {
+  font-size: 15px;
+  line-height: 2;
+}
+
+.info-card {
+  border: 2px solid var(--black);
+  padding: 30px;
+  background: white;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px dashed #999;
+  padding: 15px 0;
+  font-size: 14px;
+}
+
+.info-row strong { text-align: right; }
+
+.taste {
+  background: var(--purple);
+}
+
+.taste-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.taste-card {
+  border: 3px solid var(--black);
+  padding: 27px;
+  background: var(--white);
+  min-height: 190px;
+  transition: .25s;
+}
+
+.taste-card:hover {
+  transform: translateY(-7px) rotate(-1deg);
+  box-shadow: 8px 8px 0 var(--black);
+}
+
+.taste-card h3 {
+  font-family: 'Black Han Sans';
+  font-size: 30px;
+  margin: 0 0 15px;
+}
+
+.taste-card p {
+  line-height: 1.9;
+  font-size: 15px;
+}
+
+.taste-card:nth-child(2) { background: var(--lime); }
+.taste-card:nth-child(3) { background: var(--pink); }
+.taste-card:nth-child(4) { background: #fff; }
+
+.personality {
+  background: var(--lime);
+}
+
+.personality-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.personality-box {
+  padding: 35px;
+  border: 3px solid var(--black);
+  background: white;
+}
+
+.personality-box h3 {
+  font-family: 'Black Han Sans';
+  font-size: 32px;
+}
+
+.tag {
+  display: inline-block;
+  border: 2px solid var(--black);
+  padding: 9px 14px;
+  border-radius: 30px;
+  margin: 5px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.good .tag { background: var(--pink); }
+.bad .tag { background: #ddd; }
+
+.hobbies {
+  background: var(--black);
+  color: white;
+}
+
+.hobby-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.hobby {
+  border: 2px solid white;
+  padding: 25px;
+  min-height: 170px;
+  transition: .2s;
+}
+
+.hobby:hover {
+  background: var(--pink);
+  color: var(--black);
+}
+
+.hobby .emoji { font-size: 42px; }
+.hobby h3 { font-family: 'Black Han Sans'; }
+
+.future {
+  background: var(--pink);
+  text-align: center;
+}
+
+.future h2 {
+  font-family: 'Black Han Sans';
+  font-size: clamp(50px, 10vw, 110px);
+  line-height: 1;
+  margin: 25px 0;
+}
+
+.future p {
+  font-family: 'Do Hyeon';
+  font-size: 23px;
+}
+
+footer {
+  background: var(--lime);
+  border-top: 3px solid var(--black);
+  padding: 35px 7%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.sticker {
+  display: inline-block;
+  background: var(--lime);
+  color: var(--black);
+  padding: 9px 15px;
+  transform: rotate(4deg);
+  font-weight: bold;
+  border: 2px solid var(--black);
+}
+
+@media(max-width:700px) {
+  .nav-links { gap: 10px; font-size: 10px; }
+  .hero { min-height: 500px; }
+  .hero h1 { letter-spacing: -4px; }
+  .about-grid, .taste-grid,
+  .personality-grid { grid-template-columns: 1fr; }
+  .hobby-grid { grid-template-columns: 1fr 1fr; }
+  section { padding: 65px 6%; }
+  .profile-card { margin-bottom: 10px; }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="#" class="logo">YURI★</a>
+  <div class="nav-links">
+    <a href="#about">ABOUT</a>
+    <a href="#taste">TASTE</a>
+    <a href="#personality">ME</a>
+    <a href="#hobbies">HOBBY</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-tag">WELCOME TO MY LITTLE WORLD ✦</div>
+  <h1>HEY!<br>YURI.</h1>
+  <div class="hero-sub">
+    평범한 건 재미없잖아? 여기는 홍유리의 세계!
+  </div>
+  <span class="star one">✳</span>
+  <span class="star two">✦</span>
+  <div style="margin-top:35px">
+    <span class="sticker">SCROLL TO KNOW ME ↓</span>
+  </div>
+</header>
+
+<div class="marquee">
+  <span>
+    ✦ THIS IS YURI'S WORLD ✦ BE UNIQUE ✦ BE YOURSELF ✦
+    GOOD VIBES ONLY ✦ THIS IS YURI'S WORLD ✦ BE UNIQUE ✦
+    BE YOURSELF ✦ GOOD VIBES ONLY ✦
+  </span>
+</div>
+
+<section class="about" id="about">
+  <h2 class="section-title">01. WHO AM I?</h2>
+
+  <div class="about-grid">
+    <div class="profile-card">
+      <div style="font-size:13px;font-weight:bold">
+        INTRODUCING...
+      </div>
+      <div class="big">HONG<br>YURI!</div>
+      <p>
+        안녕! 나는 홍유리.<br>
+        충남 예산에서 자란 서울 태생의 사람.<br>
+        조금은 엉뚱하고, 좋아하는 것도 많은<br>
+        나만의 색깔을 가진 사람입니다.
+      </p>
+      <div style="font-size:30px">♡ ☆ ♡</div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-row">
+        <span>NAME</span><strong>홍유리</strong>
+      </div>
+      <div class="info-row">
+        <span>BIRTHPLACE</span><strong>서울</strong>
+      </div>
+      <div class="info-row">
+        <span>HOMETOWN</span><strong>충남 예산군</strong>
+      </div>
+      <div class="info-row">
+        <span>EDUCATION</span><strong>건양대학교 재학</strong>
+      </div>
+      <div class="info-row">
+        <span>FAMILY</span><strong>엄마, 아빠, 언니, 여동생, 고양이</strong>
+      </div>
+      <div class="info-row">
+        <span>HAIR</span><strong>곱슬머리 & 탈색 N회</strong>
+      </div>
+      <div class="info-row">
+        <span>STYLE</span><strong>피어싱을 사랑하는 사람</strong>
+      </div>
+      <div class="info-row">
+        <span>GOAL</span><strong>충남권 취업하기!</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="taste" id="taste">
+  <h2 class="section-title">02. MY TASTE!</h2>
+
+  <div class="taste-grid">
+    <div class="taste-card">
+      <h3>🍅 FOOD LOVER</h3>
+      <p>
+        토마토마라탕<br>
+        간장게장<br>
+        엄마표 된장찌개<br>
+        회
+      </p>
+    </div>
+
+    <div class="taste-card">
+      <h3>🎧 MUSIC</h3>
+      <p>
+        NOW PLAYING : Justin Bieber - BABY<br>
+        MY KARAOKE : 에일리 - 보여줄게
+      </p>
+    </div>
+
+    <div class="taste-card">
+      <h3>🏐 ANIME</h3>
+      <p>
+        최애 애니메이션<br>
+        하이큐!!<br>
+        가챠쿠타
+      </p>
+    </div>
+
+    <div class="taste-card">
+      <h3>📺 DRAMA</h3>
+      <p>
+        태양의 후예<br>
+        낭만닥터 김사부<br>
+        의학과 로맨스의 조합!
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="personality" id="personality">
+  <h2 class="section-title">03. MY VIBE.</h2>
+
+  <div class="personality-grid">
+    <div class="personality-box good">
+      <h3>♡ I LIKE</h3>
+      <p>내가 좋아하는 사람 유형</p>
+      <span class="tag">털털한 사람</span>
+      <span class="tag">용기를 주는 사람</span>
+      <span class="tag">재밌는 사람</span>
+      <span class="tag">감정기복 없는 사람</span>
+    </div>
+
+    <div class="personality-box bad">
+      <h3>✕ I DON'T LIKE</h3>
+      <p>나랑 잘 안 맞는 사람 유형</p>
+      <span class="tag">싸가지 없는 말투</span>
+      <span class="tag">사람 무시하는 사람</span>
+      <span class="tag">답답한 사람</span>
+    </div>
+  </div>
+
+  <div style="margin-top:35px;text-align:center">
+    <span class="sticker">MY RULE : RESPECT EACH OTHER!</span>
+  </div>
+</section>
+
+<section class="hobbies" id="hobbies">
+  <h2 class="section-title">04. LITTLE THINGS.</h2>
+
+  <div class="hobby-grid">
+    <div class="hobby">
+      <div class="emoji">🧶</div>
+      <h3>KNITTING</h3>
+      <p>실과 바늘로 무언가 만드는 시간.</p>
+    </div>
+
+    <div class="hobby">
+      <div class="emoji">🔮</div>
+      <h3>TAROT & SAJU</h3>
+      <p>운세와 신비로운 이야기 탐구하기.</p>
+    </div>
+
+    <div class="hobby">
+      <div class="emoji">🐈</div>
+      <h3>MY CAT</h3>
+      <p>우리 집 귀여운 고양이 한 마리.</p>
+    </div>
+
+    <div class="hobby">
+      <div class="emoji">🧠</div>
+      <h3>ANATOMY</h3>
+      <p>재밌게 들었던 과목은 인체해부학!</p>
+    </div>
+
+    <div class="hobby">
+      <div class="emoji">🌊</div>
+      <h3>YESAN</h3>
+      <p>나의 고향. 예당저수지가 유명한 곳.</p>
+    </div>
+
+    <div class="hobby">
+      <div class="emoji">💿</div>
+      <h3>MY PLAYLIST</h3>
+      <p>좋아하는 노래를 듣는 소소한 행복.</p>
+    </div>
+  </div>
+</section>
+
+<section class="future">
+  <div style="font-weight:bold;letter-spacing:4px">
+    05. NEXT CHAPTER
+  </div>
+  <h2>MY FUTURE<br>IS WAITING!</h2>
+  <p>
+    나의 다음 이야기는 충남에서!<br>
+    내가 좋아하는 것들을 잃지 않고<br>
+    나만의 길을 만들어 가기.
+  </p>
+  <div style="font-size:45px;margin-top:25px">✳ ★ ✳</div>
+</section>
+
+<footer>
+  <div>© 2026 YURI'S UNIVERSE</div>
+  <div>MADE WITH ♡ BY HONG YURI</div>
+  <div>STAY WEIRD, STAY UNIQUE!</div>
+</footer>
+
+</body>
+</html>
